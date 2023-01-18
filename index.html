@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <title>tarea</title>
+    <meta name="description" content="IIFEs" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <div>
+      <h2>Create user</h2>
+      <form id="user_form">
+        <div class="form-field">
+          <label for="firstName">First name</label>
+          <input type="text" name="firstName" class="js-form-control" />
+        </div>
+        <div class="form-field">
+          <label for="lastName">Last name</label>
+          <input type="text" name="lastName" class="js-form-control" />
+        </div>
+
+        <fieldset name="gender">
+            <legend>Gender:</legend>
+            <div>
+              <label for="">Male</label>
+              <input type="radio" id="Male" name="gender" value="Male">
+            </div>
+            <div>
+              <label for="">Female</label>
+              <input type="radio" id="Female" name="gender" value="Female">
+            </div>
+        </fieldset>
+
+        <div class="form-field">
+          <label for="dob">Date of birth</label>
+          <input type="date" name="dob" class="datepicker-cmy js-form-control" />
+        </div>
+        <fieldset name="lenguajes">
+            <legend>Lenguajes de programación</legend>
+            <label for="">Javascript</label>
+            <input name="lenguajes" type="checkbox" value="Javascript">
+            <label for="">Python</label>
+            <input name="lenguajes" type="checkbox" value="Python">
+            <label for="">Go</label>
+            <input name="lenguajes" type="checkbox" value="Go">
+            <label for="">Rust</label>
+            <input name="lenguajes" type="checkbox" value="Rust">
+        </fieldset>
+        <div class="form-field">
+          <label for="country">Country</label>
+            <select name="country" class="js-load-data js-form-control" data-type="countries">
+             <option value="Monterrey">Monterrey</option>
+             <option value="CDMX">Ciudad de Mexico</option>
+            </select>
+        </div>
+        <div class="form-field">
+          <label for="bio">Tell us a bit about yourself</label>
+          <textarea name="bio" class="js-form-control"></textarea>
+        </div>
+        <button type="submit" name="button">Submit</button>
+      </form>
+      <div name="thanks" class="hidden">
+        <h3>Thank you!</h3>
+        <p>Please check your inbox.</p>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
