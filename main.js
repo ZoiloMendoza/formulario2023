@@ -1,6 +1,7 @@
 const form = document.querySelector('form');
 const submit = document.querySelector('button');
 
+//Funcion para validar que el formulario este completo
 const validacion = (objetoFinal) => {
     let valores = Object.values(objetoFinal)
     let claves = Object.keys(objetoFinal)
@@ -14,6 +15,7 @@ const validacion = (objetoFinal) => {
     }
 }
 
+//Evento principal, llama a la funcion Validacion
 submit.addEventListener('click', (event) => {
     event.preventDefault();
     let objetoFinal = {}
@@ -26,12 +28,8 @@ submit.addEventListener('click', (event) => {
         }else if(elemento.name ==='lenguajes' && elemento.checked){
             arreglo.push(elemento.value)
             objetoFinal[elemento.name] = [].concat(arreglo);
-        }
-        
+        } 
     })
-    
-    
     console.log(validacion(objetoFinal));
-    
 })
 
