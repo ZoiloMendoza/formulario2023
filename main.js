@@ -2,16 +2,14 @@ const form = document.querySelector('form');
 const submit = document.querySelector('button');
 
 //Funcion para validar que el formulario este completo
-const validacion = (objetoFinal) => {
-    let valores = Object.values(objetoFinal)
-    let claves = Object.keys(objetoFinal)
-
-    let output = valores.every((elemento) => !elemento == '');
-
-    if(output && claves.includes('lenguajes')){
-        return objetoFinal
+const validacion = ({firstName, lastName, gender, dob, lenguajes = '', country, bio}) => {
+    
+    const objeto = {firstName, lastName, gender, dob, lenguajes, country, bio}
+    const validacionForm = Object.values(objeto).every((elemento) => !elemento == '');
+    if(validacionForm){
+        return objeto
     }else{
-        return `Oye te falta completar el formulario ${valores[0]} e.e`
+        return `Oye te falta completar el formulario ${firstName} e.e`
     }
 }
 
@@ -21,11 +19,11 @@ submit.addEventListener('click', (event) => {
     let objetoFinal = {}
     let arreglo = [];
     Array.from(form).forEach((elemento) =>{
-        if(elemento.name != 'button' && elemento.name !='gender' && elemento.name != 'lenguajes'){
+        if(elemento.name !='gender' && elemento.name != 'lenguajes'){
             objetoFinal[elemento.name] = elemento.value;
         }else if(elemento.name ==='gender' && elemento.checked){
             objetoFinal[elemento.name] = elemento.value;
-        }else if(elemento.name ==='lenguajes' && elemento.checked){
+        }else if(elemento.name === 'lenguajes' && elemento.checked){
             arreglo.push(elemento.value)
             objetoFinal[elemento.name] = [].concat(arreglo);
         } 
