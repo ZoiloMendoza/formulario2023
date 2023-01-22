@@ -1,11 +1,13 @@
 const form = document.querySelector('form');
 const submit = document.querySelector('button');
+let aver = new FormData(form);
 
 //Funcion para validar que el formulario este completo
 const validacion = ({firstName, lastName, gender, dob, lenguajes = '', country, bio}) => {
     
     const objeto = {firstName, lastName, gender, dob, lenguajes, country, bio}
     const validacionForm = Object.values(objeto).every((elemento) => !elemento == '');
+    
     if(validacionForm){
         return objeto
     }else{
@@ -14,20 +16,23 @@ const validacion = ({firstName, lastName, gender, dob, lenguajes = '', country, 
 }
 
 //Evento principal, llama a la funcion Validacion
-submit.addEventListener('click', (event) => {
-    event.preventDefault();
-    let objetoFinal = {}
-    let arreglo = [];
-    Array.from(form).forEach((elemento) =>{
-        if(elemento.name !='gender' && elemento.name != 'lenguajes'){
-            objetoFinal[elemento.name] = elemento.value;
-        }else if(elemento.name ==='gender' && elemento.checked){
-            objetoFinal[elemento.name] = elemento.value;
-        }else if(elemento.name === 'lenguajes' && elemento.checked){
-            arreglo.push(elemento.value)
-            objetoFinal[elemento.name] = [].concat(arreglo);
-        } 
-    })
-    console.log(validacion(objetoFinal));
-})
+const OutPut = () => {
 
+    submit.addEventListener('click', (event) => {
+        event.preventDefault();
+        let objetoFinal = {};
+        let arreglo = [];
+        Array.from(form).forEach((elemento) =>{
+            if(elemento.name !='gender' && elemento.name != 'lenguajes'){
+                objetoFinal[elemento.name] = elemento.value;
+            }else if(elemento.name ==='gender' && elemento.checked){
+                objetoFinal[elemento.name] = elemento.value;
+            }else if(elemento.name === 'lenguajes' && elemento.checked){
+                arreglo.push(elemento.value)
+                objetoFinal[elemento.name] = [].concat(arreglo);
+            } 
+        });
+        console.log(validacion(objetoFinal));
+    });
+}
+OutPut();
